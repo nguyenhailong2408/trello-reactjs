@@ -5,12 +5,10 @@ import VpnLockIcon from '@mui/icons-material/VpnLock'
 import AddToDriveIcon from '@mui/icons-material/AddToDrive'
 import BoltIcon from '@mui/icons-material/Bolt'
 import FilterListIcon from '@mui/icons-material/FilterList'
-import Avatar from '@mui/material/Avatar'
-import AvatarGroup from '@mui/material/AvatarGroup'
 import Tooltip from '@mui/material/Tooltip'
-import PersonAddIcon from '@mui/icons-material/PersonAdd'
-import Button from '@mui/material/Button'
 import { capitalizeFirstLetter } from '~/utils/formatters'
+import BoardUserGroup from './BoardUserGroup'
+import InviteBoardUser from './InviteBoardUser'
 
 const MENU_STYLES = {
   color: 'white',
@@ -19,11 +17,11 @@ const MENU_STYLES = {
   paddingX: '5px',
   borderRadius: '4px',
   '.MuiSvgIcon-root': {
-    color: 'white'
+    color: 'white',
   },
   '&:hover': {
-    bgcolor: 'primary.50'
-  }
+    bgcolor: 'primary.50',
+  },
 }
 
 function BoardBar(props) {
@@ -41,7 +39,7 @@ function BoardBar(props) {
         justifyContent: 'space-between',
         gap: 2,
         overflowX: 'auto',
-        backgroundColor: (theme) => (theme.palette.mode === 'dark' ? '#34495e' : '#1976d2')
+        backgroundColor: (theme) => (theme.palette.mode === 'dark' ? '#34495e' : '#1976d2'),
       }}
     >
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -88,65 +86,8 @@ function BoardBar(props) {
         />
       </Box>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-        <Button
-          variant='outlined'
-          startIcon={<PersonAddIcon />}
-          sx={{
-            color: 'white',
-            borderColor: 'white',
-            '&:hover': { borderColor: 'white' }
-          }}
-        >
-          Invite
-        </Button>
-        <AvatarGroup
-          max={3}
-          sx={{
-            gap: '10px',
-            '& .MuiAvatar-root': {
-              width: 34,
-              height: 34,
-              fontSize: 16,
-              border: 'none',
-              color: 'white',
-              cursor: 'pointer',
-              '&:first-of-type': {
-                bgcolor: '#a4b0be'
-              }
-            }
-          }}
-        >
-          <Tooltip title='Long Dev'>
-            <Avatar
-              alt='Remy Sharp'
-              src='https://beedecor.net//Content/Images/component/ea82b5c9-f375-4aa8-8a3d-3e75f7fa124b.jpg'
-            />
-          </Tooltip>
-          <Tooltip title='Long Dev'>
-            <Avatar
-              alt='Remy Sharp'
-              src='https://beedecor.net//Content/Images/component/ea82b5c9-f375-4aa8-8a3d-3e75f7fa124b.jpg'
-            />
-          </Tooltip>
-          <Tooltip title='Long Dev'>
-            <Avatar
-              alt='Remy Sharp'
-              src='https://beedecor.net//Content/Images/component/ea82b5c9-f375-4aa8-8a3d-3e75f7fa124b.jpg'
-            />
-          </Tooltip>
-          <Tooltip title='Long Dev'>
-            <Avatar
-              alt='Remy Sharp'
-              src='https://beedecor.net//Content/Images/component/ea82b5c9-f375-4aa8-8a3d-3e75f7fa124b.jpg'
-            />
-          </Tooltip>
-          <Tooltip title='Long Dev'>
-            <Avatar
-              alt='Remy Sharp'
-              src='https://beedecor.net//Content/Images/component/ea82b5c9-f375-4aa8-8a3d-3e75f7fa124b.jpg'
-            />
-          </Tooltip>
-        </AvatarGroup>
+        <InviteBoardUser boardId={board._id} />
+        <BoardUserGroup boardUsers={board?.FE_allUsers} />
       </Box>
     </Box>
   )
